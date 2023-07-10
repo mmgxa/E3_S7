@@ -1,0 +1,10 @@
+name: optuna
+best_params:
+  data.block_size: 8
+  model.drop_p: 0.0
+  model.n_decoder_blocks: 1
+  model.n_embed: 32
+  model.n_heads: 2
+  trainer.limit_train_batches: 100
+  trainer.limit_val_batches: 100
+best_value: 3.2761592864990234

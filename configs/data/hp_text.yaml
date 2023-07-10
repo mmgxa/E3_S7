@@ -1,0 +1,7 @@
+_target_: dlearn.data.text_datamodule.HPDataModule
+data_dir: ${paths.data_dir}
+batch_size: 64
+train_ratio: 0.7
+num_workers: 32
+pin_memory: False
+block_size: 32

@@ -1,0 +1,3 @@
+- experiment=s7
+- experiment_name=gpt-best-hp
+- trainer.max_epochs=10

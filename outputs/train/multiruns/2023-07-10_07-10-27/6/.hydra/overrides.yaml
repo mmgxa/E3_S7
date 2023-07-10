@@ -1,0 +1,9 @@
+- trainer.limit_train_batches=100
+- trainer.limit_val_batches=100
+- data.block_size=8
+- model.n_embed=32
+- model.n_heads=2
+- model.drop_p=0.2
+- model.n_decoder_blocks=1
+- hparams_search=gpt_optuna
+- experiment=s7

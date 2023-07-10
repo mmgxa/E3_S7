@@ -1,0 +1,45 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=cat_dog
+
+defaults:
+  - override /data: cifar10.yaml
+  - override /model: vit.yaml
+  - override /trainer: default.yaml
+  - override /logger: aim.yaml
+  - override /callbacks: default.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+experiment_name: "cifar10-vit-patch-size"
+
+tags:
+  cifar10: "patch_size_exp"
+
+seed: 12345
+
+trainer:
+  min_epochs: 0
+  max_epochs: 1
+  gradient_clip_val: 0.5
+  accelerator: gpu
+
+model:
+  num_classes: 10
+  in_channels: 3
+  patch_size: 4
+  emb_size: 64
+  img_size: 32
+  depth: 6
+
+data:
+  num_workers: 4
+  batch_size: 16
+
+compile: False
+
+logger:
+  aim:
+    experiment: ${experiment_name}

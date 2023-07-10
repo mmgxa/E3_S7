@@ -1,0 +1,6 @@
+_target_: dlearn.data.cifar10_datamodule.CIFAR10DataModule
+data_dir: ${paths.data_dir}
+batch_size: 128
+train_val_test_split: [50_000, 5_000, 5_000]
+num_workers: 32
+pin_memory: False

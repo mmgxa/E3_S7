@@ -1,0 +1,56 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=cat_dog
+
+defaults:
+  - override /data: hp_text.yaml
+  - override /model: gpt.yaml
+  - override /trainer: default.yaml
+  - override /logger: aim.yaml
+  - override /callbacks: default.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+experiment_name: "hp-gpt-optuna"
+
+# tags:
+#   cifar10: "patch_size_exp"
+
+train: True
+test: False
+tune: True
+
+seed: 12345
+
+trainer:
+  min_epochs: 0
+  max_epochs: 1
+  gradient_clip_val: 0.5
+  accelerator: gpu
+  limit_train_batches: null
+  limit_val_batches: null
+  num_sanity_val_steps: 0
+
+model:
+  learning_rate: 1e-3
+
+data:
+  num_workers: 4
+  batch_size: 256
+
+compile: False
+
+logger:
+  aim:
+    experiment: ${experiment_name}
+
+callbacks:
+  early_stopping:
+    monitor: "val/loss"
+    patience: 100
+    mode: "min"
+  model_checkpoint:
+    monitor: "val/loss"
+    mode: "min"
